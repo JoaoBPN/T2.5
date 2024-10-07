@@ -1,12 +1,9 @@
-package Modelos;
-
-import Modelos.Midias.Midia;
+package Modelos.Copias;
 
 public class CopiaVHS extends CopiaMidia {
     private boolean rebobinada;
 
-    CopiaVHS(Midia midia, int numeroDeCopias){
-        super(midia, numeroDeCopias);
+    CopiaVHS(){
         this.rebobinada = true;
     }
 
@@ -16,5 +13,10 @@ public class CopiaVHS extends CopiaMidia {
 
     public void setRebobinada(boolean rebobinada){
         this.rebobinada = rebobinada;
+    }
+
+    @Override
+    public boolean isDisponivel(){
+        return isRebobinada() && !isAlugada();
     }
 }
