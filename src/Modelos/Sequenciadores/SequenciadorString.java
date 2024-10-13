@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class SequenciadorString {
 
-    private Set<String> sequenciaisGerados = new HashSet<>();
+    private final Set<String> sequenciaisGerados = new HashSet<>();
 
     private static final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private static final int SERIAL_LENTH = 7;
@@ -21,6 +21,7 @@ public class SequenciadorString {
         novoSerial = geraSerialAleatorio();
     }
 
+    sequenciaisGerados.add(novoSerial);
     return novoSerial;
 
     }

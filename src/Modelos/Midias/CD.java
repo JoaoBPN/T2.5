@@ -1,12 +1,11 @@
 package Modelos.Midias;
 
-import java.util.Date;
 
 public class CD extends Midia{
-    private String cantorPrincipal;
-    private int numeroDeFaixas;
+    private final String cantorPrincipal;
+    private final int numeroDeFaixas;
 
-    public CD(String nomeAlbum, String generoMusical, Date anoDeProducao,
+    public CD(String nomeAlbum, String generoMusical, int anoDeProducao,
               String cantorPrincipal, int numeroDeFaixas){
         super(nomeAlbum,generoMusical,anoDeProducao);
         this.cantorPrincipal = cantorPrincipal;
@@ -21,4 +20,17 @@ public class CD extends Midia{
         return numeroDeFaixas;
     }
 
+    @Override
+    public String toString(){
+        return "Álbum: "+getNome()+
+                "\nGênero: "+getGenero()+
+                "\nAno de produção: "+getData()+
+                "\nCantor principal: "+getCantorPrincipal()+
+                "\nNumero de faixas: "+getNumeroDeFaixas();
+    }
+
+    @Override
+    public boolean hasParticipante(String participante) {
+        return getCantorPrincipal().equals(participante);
+    }
 }

@@ -1,18 +1,15 @@
 package Modelos.Midias;
 
-
-import java.util.Date;
-
 public abstract class Midia {
 
     private final String nome;
     private final String genero;
-    private final Date data;
+    private final int ano;
 
-    public Midia(String nome, String genero, Date data){
+    public Midia(String nome, String genero, int ano){
         this.nome = nome;
         this.genero = genero;
-        this.data = data;
+        this.ano = ano;
     }
 
     public String getNome() {
@@ -23,8 +20,9 @@ public abstract class Midia {
         return genero;
     }
 
-    public Date getData(){
-        return data;
+    public int getData(){
+        return ano;
     }
 
+    public abstract boolean hasParticipante(String participante);
 }

@@ -1,6 +1,5 @@
 package Modelos.Midias;
 
-import java.util.Date;
 import java.util.Set;
 
 public abstract class MidiaVisual extends Midia{
@@ -8,7 +7,7 @@ public abstract class MidiaVisual extends Midia{
     private final Set<String> atores;
     private final Integer duracaoEmMinutos;
 
-    public MidiaVisual(String nome, String genero, Date dataLancamento,
+    public MidiaVisual(String nome, String genero, int dataLancamento,
                        String diretor, Set<String> atores, Integer duracaoEmMinutos){
 
         super(nome,genero,dataLancamento);
@@ -29,4 +28,9 @@ public abstract class MidiaVisual extends Midia{
         return duracaoEmMinutos;
     }
 
+    @Override
+    public boolean hasParticipante(String participante) {
+        if(getAtores().contains(participante)) return true;
+        return getDiretor().equals(participante);
+    }
 }

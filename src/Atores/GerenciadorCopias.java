@@ -12,19 +12,21 @@ import java.util.Set;
 public class GerenciadorCopias {
     private final SequenciadorInt sequenciador = new SequenciadorInt();
     private final Map<Integer, CopiaMidia> copias = new HashMap<>();
-    private Set<Integer> valoresRemovidos = new HashSet<>();
+    private final Set<Integer> valoresRemovidos = new HashSet<>();
 
     public GerenciadorCopias(){}
 
     public void adicionaCopia(){
 
-        var numeroCopia = valoresRemovidos.iterator().next();
-
-        if(numeroCopia == null){
-            numeroCopia = sequenciador.getProximo();
+        if(valoresRemovidos.iterator().hasNext()) {
+            var numeroCopia = valoresRemovidos.iterator().next();
+            copias.put(numeroCopia,new CopiaMidia());
+            return;
         }
 
+        var numeroCopia = sequenciador.getProximo();
         copias.put(numeroCopia,new CopiaMidia());
+
     }
 
     public void removeCopia(Integer numeroCopia){
@@ -38,9 +40,21 @@ public class GerenciadorCopias {
 
             copias.remove(numeroCopia);
             valoresRemovidos.add(numeroCopia);
-            return;
         }
 
+    }
+
+    public void alugaCopia(){
+        for(Map.Entry<Integer, CopiaMidia> entry : copias.entrySet()){
+            var copia = entry.getValue();
+            if(copia.isDisponivel()){
+                copia.setAlugada(true);
+                System.out.println("Copia alugada com sucesso\n Numero copia: "+entry.getKey());
+                return;
+            }
+        }
+
+        System.out.println("Nenhuma cópia esta disponível para aluguel");
     }
 
     public void alugaCopia(Integer numeroCopia){

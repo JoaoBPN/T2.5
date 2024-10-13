@@ -1,6 +1,5 @@
 package Modelos.Midias;
 
-import java.util.Date;
 import java.util.Set;
 
 public class DVD extends MidiaVisual{
@@ -8,8 +7,8 @@ public class DVD extends MidiaVisual{
     private final int classificaoEtaria;
     private final String regiao;
 
-    public DVD(String titulo, String genero, Date anoDePublicacao,
-               String diretor, Set<String> atores, Integer duracaoEmMinutos,
+    public DVD(String titulo, String genero, int anoDePublicacao,
+               String diretor, Set<String> atores, int duracaoEmMinutos,
                int classificaoEtaria, String regiao){
 
         super(titulo,genero,anoDePublicacao,diretor,atores,duracaoEmMinutos);
@@ -23,6 +22,20 @@ public class DVD extends MidiaVisual{
 
     public String getRegiao() {
         return regiao;
+    }
+
+
+    @Override
+    public String toString(){
+        // metodo incompleto, ainda falta exibir os atores
+        return "Título: "+getNome()+
+                "\nGênero: "+getGenero()+
+                "\nAno de publicação: "+getData()+
+                "\nDiretor: "+getDiretor()+
+                "\nDuracao em minutos: "+getDuracaoEmMinutos()+
+                "\nClassificação etária: "+getClassificaoEtaria()+
+                "\nRegião: "+getRegiao();
+
     }
 
 }
